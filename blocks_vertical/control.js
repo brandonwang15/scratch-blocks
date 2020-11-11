@@ -26,6 +26,20 @@ goog.require('Blockly.Blocks');
 goog.require('Blockly.Colours');
 goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 
+Blockly.Blocks['control_breakpoint'] = {
+  /**
+   * Breakpoint block
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "id": "control_breakpoint",
+      "message0": Blockly.Msg.CONTROL_BREAKPOINT,
+      "category": Blockly.Categories.control,
+      "extensions": ["colours_control", "shape_statement"]
+    });
+  }
+};
 
 Blockly.Blocks['control_forever'] = {
   /**
