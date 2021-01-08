@@ -944,11 +944,21 @@ Blockly.WorkspaceSvg.prototype.highlightBlock = function(id, opt_state) {
  * @param {boolean} isGlowingBlock Whether to glow the block.
  */
 Blockly.WorkspaceSvg.prototype.glowBlock = function(id, isGlowingBlock) {
+  console.log("in Blockly.WorkspaceSvg.prototype.glowBlock(). workspace = ", this)
   var block = null;
   if (id) {
     block = this.getBlockById(id);
     if (!block) {
-      throw 'Tried to glow block that does not exist.';
+      console.log("workspace: ", this);
+      console.log("glowBlock(): block doesn't exist: " + id);
+      // TODO(bdnwang): 
+      // I commented out this throw since with the single-stepping highlighting 
+      // logic, we sometimes trigger the exception when switching between sprites.
+      // Likely because the blocks displayed on screen are sprite-specific, and the previously
+      // highlighted block no longer exists.
+      // TODO because we should ideally handle this as a check elsewhere and keep the throw.
+      // throw ('Tried to glow block that does not exist. hello');
+      return;
     }
   }
   block.setGlowBlock(isGlowingBlock);
